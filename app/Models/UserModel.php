@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 class User {
     // private $id=0;
     private $name;
@@ -50,7 +51,8 @@ class User {
            }
    }
 
-   public static function all($conn) {
+   public static function all($conn): array
+   {
        $sql = "SELECT * FROM users";
        $result = $conn->query($sql); //виконання запиту
        if ($result->num_rows > 0) {
@@ -67,7 +69,6 @@ class User {
 
    public static function update($conn, $id, $data) {
     $name = $data['name'];
-    // echo $data['name'];
     $email = $data['email'];
     $gender = $data['gender'];
     $photo =$data['photo'];

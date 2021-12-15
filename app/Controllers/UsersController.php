@@ -1,4 +1,7 @@
 <?php
+require './vendor/autoload.php';
+use Models\User;
+
 class UsersController
 {
    private $conn;
@@ -8,7 +11,7 @@ class UsersController
    }
 
    public function delete() {
-    include_once 'app/Models/UserModel.php';
+    // include_once 'app/Models/UserModel.php';
     // блок з валідацією
     // echo $_GET['id'];
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -20,7 +23,7 @@ class UsersController
  }
     
     public function show(){
-        include_once 'app/Models/UserModel.php';
+        // include_once 'app/Models/UserModel.php';
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (trim($id) !== "" && is_numeric($id)) {
         $user = (new User())::byId($this->conn, $id);
@@ -31,7 +34,7 @@ class UsersController
 
    public function index()
    {
-       include_once 'app/Models/UserModel.php';
+    //    include_once 'app/Models/UserModel.php';
 
        // отримання користувачів
        $users = (new User())::all($this->conn);
@@ -44,7 +47,7 @@ class UsersController
 
    public function add()
    {
-       include_once 'app/Models/UserModel.php';
+    //    include_once 'app/Models/UserModel.php';
        // блок з валідацією
     
        include_once './uploads.php';
@@ -64,7 +67,7 @@ class UsersController
 
    public function update()
    {
-       include_once 'app/Models/UserModel.php';
+    //    include_once 'app/Models/UserModel.php';
        // блок з валідацією
     //    echo $password;
        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);

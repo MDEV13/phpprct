@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 class Role {
     // private $id=0;
     private $role;
@@ -6,7 +7,6 @@ class Role {
    public function __construct($role=' ')
    {
         $this->role=$role;
-    //    $this->id++;
    }
 
    public static function delete($conn, $id) {
@@ -18,7 +18,6 @@ class Role {
     } 
 
    public function add($conn,$id) {
-    //    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
        $sql = "UPDATE users SET id_role='$this->role' WHERE id=$id;";
         //    echo $this->name;
            $res = mysqli_query($conn, $sql);

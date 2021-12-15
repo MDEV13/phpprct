@@ -1,4 +1,5 @@
 <?php
+
 class RoleController
 {
    private $conn;
@@ -8,7 +9,6 @@ class RoleController
    }
 
    public function delete() {
-    include_once 'app/Models/RoleModel.php';
     // блок з валідацією
     // echo $_GET['id'];
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -31,8 +31,6 @@ class RoleController
 
    public function index()
    {
-       include_once 'app/Models/RoleModel.php';
-
        // отримання користувачів
        $users = (new Role())::all($this->conn);
        include_once 'views/roles.php';
@@ -45,7 +43,6 @@ class RoleController
 
    public function add()
    {
-       include_once 'app/Models/RoleModel.php';
        $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
        $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
        echo $role;
@@ -59,9 +56,10 @@ class RoleController
 
    public function update()
    {
-       include_once 'app/Models/RoleModel.php';
+    //    include_once 'app/Models/RoleModel.php';
     //    if($_POST['role']==='admin') $role=2;
     //    else $role=1;
+       $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
        if (trim($role) !== "") {
            // додати користувача
            $user = (new Role())::update($this->conn, $_GET['id'],$role);
