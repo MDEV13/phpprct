@@ -13,6 +13,12 @@ class IndexController
        include_once 'views/home.php';
    }
 
+   public function support()
+   {
+       // виклик відображення
+       include_once 'views/contacts.php';
+   }
+
    public function auth()
    {
        // виклик відображення

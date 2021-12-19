@@ -26,7 +26,7 @@
 <div class="container">
         <?php if(!$isLogIn): ?>
        <h3>Control Panel</h3>
-       <form action="?controller=index&action=auth" method="post">
+       <form action="?controller=index&action=auth" method="post" enctype="multipart/form-data">
            <div class="row">
                <div class="field">
                    <label>Email: <input type="email" name="email"></label>

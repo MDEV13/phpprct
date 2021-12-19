@@ -1,11 +1,15 @@
 {
     "require": {
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.4",
+        "phpmailer/phpmailer": "^6.5",
+        "league/oauth2-google": "^4.0",
+        "league/oauth2-client": "^2.6"
     },
     "autoload": {
         "psr-4": {
             "Config\\" : "config/",
-            "Models\\" : "app/Models/"
+            "Models\\" : "app/Models/",
+            "Controllers\\" : "app/Controllers/"
         }
     }
 }

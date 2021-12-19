@@ -36,6 +36,9 @@
    <a class="btn" href="?controller=users&action=addForm">Add new user</a>
    <a class="btn" href="?controller=roles">List of role</a>
     <?php endif;?>
+    <?php if($_SESSION['auth']===true):?>
+   <a class="btn" href="?controller=index&action=support">Support</a>
+    <?php endif;?>
    <a class="btn" href="?controller=index">Return back</a>
    
 </div>
