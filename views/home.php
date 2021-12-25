@@ -1,9 +1,5 @@
 <?php
     session_start();
-    $isLogIn = false;
-    if (isset($_SESSION['auth'])) {
-        $isLogIn = true;
-    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,32 +17,49 @@
            width: 400px;
        }
    </style>
+    
 </head>
 <body>
-<div class="container">
-        <?php if(!$isLogIn): ?>
-       <h3>Control Panel</h3>
-       <form action="?controller=index&action=auth" method="post" enctype="multipart/form-data">
+<div id="response" class="container">
+        <h3>Control Panel</h3>
+      <form name="form">
            <div class="row">
                <div class="field">
-                   <label>Email: <input type="email" name="email"></label>
+                   <label>Email: </label>
+                   <input type="email" name="email">
                </div>
            </div>
            <div class="row">
                <div class="field">
-                   <label>Password: <input type="password" name="password"><br></label>
-               </div>
+                   <label>Password: </label>
+                   <input type="password" name="password"><br>
+              </div>
            </div>
-           <input type="submit" class="btn" value="Login">
-       </form>
-       <!-- <div>
-            <a href="?controller=users">List of all Users</a> 
-       </div> -->
-       <?php else:?>
-        <span>
-           You have already logged in, you can <a href="../logout.php">log out</a> if you want 
-        </span>
-        <?php endif;?>
+           <input id="submit" type="submit" class="btn" value="Login">
+        </form>
+        <script>
+            const ADMIN_EMAIL = 'admin@admin.com'; // auth for admin
+            const ADMIN_PASSWORD = '111111';
+            let login = document.getElementById("submit");
+            login.addEventListener("click",ev=>
+            {
+                ev.preventDefault();
+                let fr = document.forms[0];
+                
+                var email  = fr.elements[0].value;
+                var pass  = fr.elements[1].value;
+                // console.log(fr.elements[0]);
+                if( email===ADMIN_EMAIL && email===ADMIN_EMAIL) window.location.href='?controller=users';
+                else
+                {
+                    fr.elements[0].value= "";
+                    fr.elements[1].value= "";
+                    let div = document.createElement('div');
+                    div.innerHTML = "<strong style='color:red'>Не верно введены данные!</strong>";
+                    fr.append(div);
+                }
+            });
+        </script>
 </div>
 </body>
 </html>

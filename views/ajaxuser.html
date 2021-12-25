@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <style>
+       .container {
+           width: 400px;
+       }
+   </style>
+   <script>
+       window.onload = function()
+       {
+        const requestURL = 'https://jsonplaceholder.typicode.com/users';
+
+        function sendRequest(method, url, body = null) {
+            return fetch(url).then( response => {
+                return response.json()
+            })
+        }
+
+        
+        sendRequest('GET', requestURL).then( data => {
+        console.log(data);
+        var users = document.getElementById("users");
+            var tr1 = document.createElement("tr");
+            var td1 = document.createElement("td");
+            td1.innerText = "ID";
+            var td2 = document.createElement("td");
+            td2.innerHTML = "Name";
+            var td3 = document.createElement("td");
+            td3.innerHTML = "Username";
+            var td4 = document.createElement("td");
+            td4.innerHTML = "Email";
+            var td5 = document.createElement("td");
+            td5.innerHTML ="Phone";
+
+            tr1.appendChild(td1);
+            tr1.appendChild(td2);
+            tr1.appendChild(td3);
+            tr1.appendChild(td4);
+            tr1.appendChild(td5);
+            users.appendChild(tr1);
+        for(var str in data)
+        {
+
+            // console.log(data[str]);
+            // var users = document.getElementById("users");
+            var tr1 = document.createElement("tr");
+            var td1 = document.createElement("td");
+            td1.innerText = data[str]["id"];
+            var td2 = document.createElement("td");
+            td2.innerHTML = data[str]["name"];
+            var td3 = document.createElement("td");
+            td3.innerHTML = data[str]["username"];
+            var td4 = document.createElement("td");
+            td4.innerHTML = data[str]["email"];
+            var td5 = document.createElement("td");
+            td5.innerHTML = data[str]["phone"];
+
+            tr1.appendChild(td1);
+            tr1.appendChild(td2);
+            tr1.appendChild(td3);
+            tr1.appendChild(td4);
+            tr1.appendChild(td5);
+            users.appendChild(tr1);
+        }
+        }).catch( error => console.error(error));
+
+           
+
+       };
+   </script>
+</head>
+<body style="padding-top: 3rem;">
+
+    <div id="users">
+        
+    </div>
+</body>
+</html>
